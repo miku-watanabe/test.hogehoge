@@ -1,0 +1,125 @@
+/**
+ * userクラス
+ *　@author m.watanabe
+ */
+ 
+ class Service_User
+ {
+ /**
+  * userをDBに登録する
+  * @param string $name 名前
+  * @param string $pass パスワード
+  * @return array 更新の結果
+  */
+  
+  public static function registerUser($name,$pass)
+  {
+	$user = \Common\Model_User::forge()->set(array(
+		'name' = $param['name'],
+		'password' = $param['pass']
+	));
+	
+	$result = $user ->save();
+  }
+  return $result;
+  
+	 public static function checkUser($name,$pass)
+	 {
+	$cond = array(
+		'where' => array(
+			array('name','=',$name),
+			array('pass','=',$pass)
+		),
+	);
+	$user = \Common\Modelel_User::find('first',$cond);
+	$result;
+	 
+	 }
+  	return $result;
+ }
+ 
+ 
+ 
+ /**
+ * postクラス
+ *@author m.watanabe
+ */
+ 
+ class Service_Post
+ {
+ /**
+ 	 * userとpostをDBから取得する
+ 	 * @return	array
+ 	 */
+	 
+	 public static function getUserPost()
+	 {
+		$posts = \Common\Model_Post::find('all');
+		$users - \Common\Model_User::find('all');
+	
+		$list = array();
+		$cnt = 0;
+	
+		foreach($posts as $post){
+			foreach($users as $user){
+			
+				if($user->id == $post->user_id){
+					$list[$cnt]['id'] = $post->id;
+					$list[$cnt]['name'] = $user->name;
+					$list[$cnt]['message'] = $post->message;
+					$list[$cnt]['date'] = $post->created;
+					$cnt++;
+				}
+			}
+		}
+	 	return $list;
+	 
+	 }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ } 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+$users = \Common\Model_User::find('all');
+$posts = \Common\Model_Post::find('all');
+
+$list = array();
+$cnt = 0;
+foreach($posts as $post){
+	foreach($users as $user){
+		//DB usersのid = DB postsのuser_idが一致なら
+		if($user->id == $post->user_id){
+			//listのarrayで返す
+			$list[$cnt]['id'] = $post->id;
+			$list[$cnt]['name'] = $user->name;
+			$list[$cnt]['message'] = $post->message;
+			$list[$cnt]['date'] = $post->created;
+			$cnt++;
+		}
+	}
+}
+
+
+
+
