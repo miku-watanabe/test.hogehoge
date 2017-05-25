@@ -9,7 +9,7 @@
   * userをDBに登録する
   * @param string $name 名前
   * @param string $pass パスワード
-  * @return array 更新の結果
+  * @return array 更新の結果っっ
   */
   
   public static function registerUser($name,$pass)
