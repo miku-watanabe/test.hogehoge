@@ -27,7 +27,7 @@
 	 {
 	$cond = array(
 		'where' => array(
-			array('name','=',$name),
+			array('name','=',$name),jj
 			array('pass','=',$pass)
 		),
 	);
