@@ -8,7 +8,7 @@
  /**
   * userをDBに登録する
   * @param string $name 名前
-  * @param string $pass パスワード
+  * @param string $pass パスワkード
   * @return array 更新の結果
   */
   
